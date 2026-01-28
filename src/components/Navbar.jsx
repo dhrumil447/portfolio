@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiMenu, HiX, HiMoon, HiSun, HiDownload } from "react-icons/hi";
+import resumePDF from "../img/resume.pdf";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,7 +95,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
               {/* Download CV Button */}
               <a
-                href="/Dhrumil_Patel_CV.pdf"
+                href={resumePDF}
                 download="Dhrumil_Patel_Resume.pdf"
                 className="ml-2 px-5 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-full transition-all duration-200 flex items-center gap-2 shadow-lg shadow-red-500/20"
               >
@@ -171,7 +172,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               );
             })}
             <a
-              href="/Dhrumil_Patel_CV.pdf"
+              href={resumePDF}
               download="Dhrumil_Patel_Resume.pdf"
               className="block py-3 px-4 mt-2 bg-red-600 hover:bg-red-700 text-white text-center rounded-xl transition-all duration-200 font-medium flex items-center justify-center gap-2"
               onClick={() => setIsOpen(false)}

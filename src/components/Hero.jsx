@@ -9,6 +9,7 @@ import {
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import profileImage from "../img/WhatsApp Image 2026-01-28 at 9.29.22 PM.jpeg";
+import resumePDF from "../img/resume.pdf";
 
 const Hero = () => {
   const [copied, setCopied] = useState(false);
@@ -229,7 +230,7 @@ const Hero = () => {
                 </motion.div>
               </motion.a>
               <motion.a
-                href="/Dhrumil_Patel_CV.pdf"
+                href={resumePDF}
                 download="Dhrumil_Patel_Resume.pdf"
                 className="group px-8 py-3.5 bg-gray-100 dark:bg-dark-card border border-gray-300 dark:border-dark-border hover:border-red-500 text-gray-900 dark:text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
                 whileHover={{ scale: 1.05, y: -2 }}

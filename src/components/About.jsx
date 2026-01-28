@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { HiCode, HiLightningBolt, HiHeart, HiDownload } from "react-icons/hi";
 import profileImage from "../img/WhatsApp Image 2026-01-28 at 9.29.22 PM.jpeg";
+import resumePDF from "../img/resume.pdf";
 
 const About = () => {
   const ref = useRef(null);
@@ -133,7 +134,7 @@ const About = () => {
             </div>
 
             <motion.a
-              href="/Dhrumil_Patel_CV.pdf"
+              href={resumePDF}
               download="Dhrumil_Patel_Resume.pdf"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
