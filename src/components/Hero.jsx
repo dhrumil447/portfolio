@@ -38,6 +38,7 @@ const Hero = () => {
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+      aria-label="Hero section - Frontend Developer Introduction"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -124,8 +125,9 @@ const Hero = () => {
                 <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl">
                   <img
                     src={profileImage}
-                    alt="Dhrumil Patel"
+                    alt="Dhrumil Patel - Frontend Developer specializing in React.js and React Native"
                     className="w-full h-full object-cover scale-[2]"
+                    loading="eager"
                   />
                 </div>
               </motion.div>

@@ -1,15 +1,26 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { 
-  SiReact, SiJavascript, SiHtml5, SiCss3, SiBootstrap, SiMui,
-  SiNodedotjs, SiMysql, SiGithub, SiVisualstudiocode, SiAndroidstudio,
-  SiTailwindcss, SiRedux, SiFigma
-} from 'react-icons/si'
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import {
+  SiReact,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiBootstrap,
+  SiMui,
+  SiNodedotjs,
+  SiMysql,
+  SiGithub,
+  SiVisualstudiocode,
+  SiAndroidstudio,
+  SiTailwindcss,
+  SiRedux,
+  SiFigma,
+} from "react-icons/si";
 
 const Skills = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const skillCategories = [
     {
@@ -17,11 +28,19 @@ const Skills = () => {
       skills: [
         { name: "React.js", icon: <SiReact />, color: "text-cyan-500" },
         { name: "React Native", icon: <SiReact />, color: "text-cyan-600" },
-        { name: "JavaScript", icon: <SiJavascript />, color: "text-yellow-500" },
+        {
+          name: "JavaScript",
+          icon: <SiJavascript />,
+          color: "text-yellow-500",
+        },
         { name: "HTML5", icon: <SiHtml5 />, color: "text-orange-600" },
         { name: "CSS3", icon: <SiCss3 />, color: "text-blue-600" },
-        { name: "Tailwind CSS", icon: <SiTailwindcss />, color: "text-cyan-400" },
-      ]
+        {
+          name: "Tailwind CSS",
+          icon: <SiTailwindcss />,
+          color: "text-cyan-400",
+        },
+      ],
     },
     {
       title: "UI Libraries",
@@ -30,7 +49,7 @@ const Skills = () => {
         { name: "Material UI", icon: <SiMui />, color: "text-blue-500" },
         { name: "Redux", icon: <SiRedux />, color: "text-purple-700" },
         { name: "Figma", icon: <SiFigma />, color: "text-pink-500" },
-      ]
+      ],
     },
     {
       title: "Backend & Database",
@@ -38,20 +57,37 @@ const Skills = () => {
         { name: "Node.js", icon: <SiNodedotjs />, color: "text-green-600" },
         { name: "REST API", icon: <SiReact />, color: "text-blue-500" },
         { name: "MySQL", icon: <SiMysql />, color: "text-blue-700" },
-      ]
+      ],
     },
     {
       title: "Tools & Others",
       skills: [
-        { name: "GitHub", icon: <SiGithub />, color: "text-gray-800 dark:text-white" },
-        { name: "VS Code", icon: <SiVisualstudiocode />, color: "text-blue-600" },
-        { name: "Android Studio", icon: <SiAndroidstudio />, color: "text-green-500" },
-      ]
-    }
-  ]
+        {
+          name: "GitHub",
+          icon: <SiGithub />,
+          color: "text-gray-800 dark:text-white",
+        },
+        {
+          name: "VS Code",
+          icon: <SiVisualstudiocode />,
+          color: "text-blue-600",
+        },
+        {
+          name: "Android Studio",
+          icon: <SiAndroidstudio />,
+          color: "text-green-500",
+        },
+      ],
+    },
+  ];
 
   return (
-    <section id="skills" className="section-container" ref={ref}>
+    <section
+      id="skills"
+      className="section-container"
+      ref={ref}
+      aria-label="Technical Skills - Frontend, Backend, and Tools"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -96,10 +132,14 @@ const Skills = () => {
                     key={skillIndex}
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.5 + categoryIndex * 0.1 + skillIndex * 0.05 }}
+                    transition={{
+                      delay: 0.5 + categoryIndex * 0.1 + skillIndex * 0.05,
+                    }}
                     className="flex items-center gap-3 group cursor-default"
                   >
-                    <div className={`text-3xl ${skill.color} group-hover:scale-125 transition-transform duration-300`}>
+                    <div
+                      className={`text-3xl ${skill.color} group-hover:scale-125 transition-transform duration-300`}
+                    >
                       {skill.icon}
                     </div>
                     <span className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-red-500 transition-colors duration-300">
@@ -120,13 +160,17 @@ const Skills = () => {
           className="mt-12 text-center glass-card p-8 rounded-2xl max-w-3xl mx-auto"
         >
           <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-            Constantly learning and exploring new technologies to stay ahead in the ever-evolving world of web development. 
-            <span className="gradient-text font-semibold"> Always open to new challenges!</span>
+            Constantly learning and exploring new technologies to stay ahead in
+            the ever-evolving world of web development.
+            <span className="gradient-text font-semibold">
+              {" "}
+              Always open to new challenges!
+            </span>
           </p>
         </motion.div>
       </motion.div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

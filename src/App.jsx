@@ -10,6 +10,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
+import SEO from "./components/SEO";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -48,6 +49,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
+      <SEO />
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
       <About />

@@ -28,7 +28,12 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="section-container" ref={ref}>
+    <section
+      id="about"
+      className="section-container"
+      ref={ref}
+      aria-label="About Dhrumil Patel - Frontend Developer"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -66,8 +71,9 @@ const About = () => {
                 <div className="w-full max-w-md aspect-square rounded-2xl overflow-hidden">
                   <img
                     src={profileImage}
-                    alt="Dhrumil Patel - Frontend Developer"
+                    alt="Dhrumil Patel - Professional Frontend Developer specializing in React.js and React Native"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
                 </div>
                 {/* Decorative Elements */}
