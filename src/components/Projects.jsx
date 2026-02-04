@@ -16,8 +16,8 @@ const Projects = () => {
       techStack: ["React Native", "Node.js", "MySQL", "REST API"],
       image:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
-      liveLink: "#",
-      githubLink: "#",
+      liveLink: "https://github.com/dhrumil447/DocBook.git",
+      githubLink: "https://github.com/dhrumil447/DocBook.git",
       featured: true,
     },
     // {
