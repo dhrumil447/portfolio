@@ -131,9 +131,9 @@ const About = () => {
               <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
                 9+ Months Experience
               </span>
-              <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
+              {/* <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
                 10+ Projects
-              </span>
+              </span> */}
               <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
                 React Specialist
               </span>

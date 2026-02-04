@@ -15,7 +15,6 @@ import {
   SiAndroidstudio,
   SiTailwindcss,
   SiRedux,
-  SiFigma,
 } from "react-icons/si";
 
 const Skills = () => {
@@ -48,7 +47,6 @@ const Skills = () => {
         { name: "Bootstrap", icon: <SiBootstrap />, color: "text-purple-600" },
         { name: "Material UI", icon: <SiMui />, color: "text-blue-500" },
         { name: "Redux", icon: <SiRedux />, color: "text-purple-700" },
-        { name: "Figma", icon: <SiFigma />, color: "text-pink-500" },
       ],
     },
     {

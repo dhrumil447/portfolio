@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -16,6 +17,7 @@ const Contact = () => {
   });
 
   const [formStatus, setFormStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -26,10 +28,51 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle form submission to a backend
-    setFormStatus("Thanks for reaching out! I'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setFormStatus(""), 5000);
+    setIsSubmitting(true);
+    setFormStatus("");
+
+    // EmailJS Configuration
+    // Replace these with your actual EmailJS credentials
+    const serviceID = "service_rl0f4za";
+    const templateID = "template_fj8r0ld";
+    const publicKey = "SwJM3G57VeGq0uvhd";
+
+    // Send email using EmailJS
+    emailjs
+      .send(
+        serviceID,
+        templateID,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          time: new Date().toLocaleString("en-US", {
+            dateStyle: "medium",
+            timeStyle: "short",
+          }),
+        },
+        publicKey,
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          setFormStatus(
+            "✅ Message sent successfully! I'll get back to you soon.",
+          );
+          setFormData({ name: "", email: "", subject: "", message: "" });
+          setIsSubmitting(false);
+          setTimeout(() => setFormStatus(""), 5000);
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          setFormStatus(
+            "❌ Failed to send message. Please try again or email me directly.",
+          );
+          setIsSubmitting(false);
+          setTimeout(() => setFormStatus(""), 5000);
+        },
+      );
   };
 
   const contactInfo = [
@@ -281,9 +324,10 @@ const Contact = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-lg shadow-red-500/20 transition-all duration-300 hover:scale-[1.02]"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-red-600 hover:bg-red-700 disabled:bg-gray-500 disabled:cursor-not-allowed text-white rounded-xl font-semibold shadow-lg shadow-red-500/20 transition-all duration-300 hover:scale-[1.02] disabled:hover:scale-100"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
               {/* Form Status */}

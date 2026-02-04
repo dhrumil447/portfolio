@@ -363,7 +363,7 @@ const ChatBot = () => {
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(true)}
-              className="relative p-6 bg-gradient-to-br from-primary via-primary to-primary-light hover:from-primary-light hover:to-primary hover:shadow-2xl text-white rounded-full shadow-xl group overflow-hidden"
+              className="relative p-4 bg-gradient-to-br from-primary via-primary to-primary-light hover:from-primary-light hover:to-primary hover:shadow-2xl text-white rounded-full shadow-xl group overflow-hidden"
               aria-label="Open chat"
             >
               {/* Animated gradient shimmer */}
@@ -399,7 +399,7 @@ const ChatBot = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  <BsStars className="w-8 h-8 drop-shadow-lg" />
+                  <BsStars className="w-6 h-6 drop-shadow-lg" />
                 </motion.div>
                 <motion.div
                   className="absolute -top-1 -right-1"
@@ -414,7 +414,7 @@ const ChatBot = () => {
                     ease: "linear",
                   }}
                 >
-                  <HiSparkles className="w-4 h-4 drop-shadow-md" />
+                  <HiSparkles className="w-3 h-3 drop-shadow-md" />
                 </motion.div>
               </div>
 
