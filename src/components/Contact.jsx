@@ -28,6 +28,22 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Rate limiting check
+    const lastSubmitTime = localStorage.getItem("lastEmailSubmit");
+    const now = Date.now();
+    const cooldownTime = 60000; // 1 minute cooldown
+
+    if (lastSubmitTime && now - parseInt(lastSubmitTime) < cooldownTime) {
+      const remainingTime = Math.ceil(
+        (cooldownTime - (now - parseInt(lastSubmitTime))) / 1000,
+      );
+      setFormStatus(
+        `⏳ Please wait ${remainingTime} seconds before sending another message.`,
+      );
+      return;
+    }
+
     setIsSubmitting(true);
     setFormStatus("");
 
@@ -55,7 +71,7 @@ const Contact = () => {
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
+          localStorage.setItem("lastEmailSubmit", Date.now().toString());
           setFormStatus(
             "✅ Message sent successfully! I'll get back to you soon.",
           );
@@ -64,7 +80,6 @@ const Contact = () => {
           setTimeout(() => setFormStatus(""), 5000);
         },
         (error) => {
-          console.log("FAILED...", error);
           setFormStatus(
             "❌ Failed to send message. Please try again or email me directly.",
           );
