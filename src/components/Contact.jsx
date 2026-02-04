@@ -32,10 +32,9 @@ const Contact = () => {
     setFormStatus("");
 
     // EmailJS Configuration
-    // Replace these with your actual EmailJS credentials
-    const serviceID = "service_rl0f4za";
-    const templateID = "template_fj8r0ld";
-    const publicKey = "SwJM3G57VeGq0uvhd";
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     // Send email using EmailJS
     emailjs
