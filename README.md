@@ -143,7 +143,10 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 👨‍💻 Developer
 
 **Dhrumil Patel**
-- Frontend Developer at Arihant Solution
+- Software Developer at Lemon Software Solution (https://lemonsoftwaresolution.com/)
+- Previous Experience: [Walter Technologies](https://waltertechnologies.com/)
+- Published Play Store App: MoneyFlow – Expense Tracker
+- Live Projects: Enterprise CRM & ERP Systems
 - Specializing in React.js & React Native
 
 ## 🤝 Contributing

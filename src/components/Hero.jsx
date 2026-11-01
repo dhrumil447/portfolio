@@ -5,8 +5,9 @@ import {
   HiClipboardCopy,
   HiCheck,
   HiDownload,
+  HiExternalLink,
 } from "react-icons/hi";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaGooglePlay } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import profileImage from "../img/WhatsApp Image 2026-01-28 at 9.29.22 PM.jpeg";
 import resumePDF from "../img/resume.pdf";
@@ -14,40 +15,62 @@ import resumePDF from "../img/resume.pdf";
 const Hero = () => {
   const [copied, setCopied] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const fullText = "Frontend Developer";
+  const titles = [
+    "Software Developer",
+    "Web & Mobile Apps",
+    "CRM & ERP Systems",
+    "React & React Native",
+  ];
+  const [titleIndex, setTitleIndex] = useState(0);
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypedText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
+    let currentTitle = titles[titleIndex];
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const interval = setInterval(() => {
+      if (!isDeleting) {
+        setTypedText(currentTitle.substring(0, charIndex + 1));
+        charIndex++;
+        if (charIndex === currentTitle.length) {
+          isDeleting = true;
+          clearInterval(interval);
+          setTimeout(() => {
+            const deleteInterval = setInterval(() => {
+              setTypedText(currentTitle.substring(0, charIndex - 1));
+              charIndex--;
+              if (charIndex === 0) {
+                clearInterval(deleteInterval);
+                setTitleIndex((prev) => (prev + 1) % titles.length);
+              }
+            }, 50);
+          }, 1800);
+        }
       }
     }, 100);
-    return () => clearInterval(timer);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [titleIndex]);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("dhrumil@example.com");
+    navigator.clipboard.writeText("dhrumil.447@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
-      aria-label="Hero section - Frontend Developer Introduction"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-16"
+      aria-label="Hero section - Software Developer Portfolio"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating orbs with different animations */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-red-500/10 rounded-full blur-3xl"
           animate={{
-            y: [0, -50, 0],
-            x: [0, 30, 0],
+            y: [0, -40, 0],
+            x: [0, 25, 0],
             scale: [1, 1.1, 1],
           }}
           transition={{
@@ -57,29 +80,17 @@ const Hero = () => {
           }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-pink-500/10 rounded-full blur-3xl"
           animate={{
-            y: [0, 50, 0],
-            x: [0, -30, 0],
-            scale: [1, 1.2, 1],
+            y: [0, 40, 0],
+            x: [0, -25, 0],
+            scale: [1, 1.15, 1],
           }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
             delay: 1,
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
           }}
         />
       </div>
@@ -106,107 +117,76 @@ const Hero = () => {
             >
               <motion.div
                 className="relative"
-                whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
-                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Animated Glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-red-500/30 to-pink-500/30 rounded-full blur-2xl"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-gray-800 shadow-2xl">
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/30 to-pink-500/30 rounded-full blur-2xl animate-pulse" />
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-gray-200 dark:border-neutral-800 shadow-2xl bg-neutral-900">
                   <img
                     src={profileImage}
-                    alt="Dhrumil Patel - Frontend Developer specializing in React.js and React Native"
-                    className="w-full h-full object-cover scale-[2]"
+                    alt="Dhrumil Patel - Software Developer at Lemon Software Solution"
+                    className="w-full h-full object-cover scale-[1.9] translate-y-1"
                     loading="eager"
                   />
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Status Badge */}
+            {/* Employment Status Badge */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="flex justify-center mb-4"
+              className="flex justify-center mb-2"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-dark-card border border-gray-300 dark:border-dark-border rounded-full">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span className="text-sm text-gray-700 dark:text-gray-300 font-mono">
-                  Available for work!
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/10 rounded-full shadow-sm">
+                <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Software Developer @ Lemon Software Solution
                 </span>
               </div>
             </motion.div>
 
-            {/* Location */}
+            {/* Location & Tenure */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-sm text-gray-600 dark:text-gray-500 mb-8 text-center"
+              className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6 text-center"
             >
-              Currently based in India — open to relocate
+              July 2026 – Present • India
             </motion.p>
 
             {/* Name & Title */}
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4">
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight"
               >
-                <motion.span
-                  className="text-gray-900 dark:text-white inline-block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.5 }}
-                >
-                  Hi I'm
-                </motion.span>
-                <motion.span
-                  className="gradient-text inline-block"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    delay: 0.9,
-                    duration: 0.5,
-                    type: "spring",
-                    bounce: 0.5,
-                  }}
-                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                >
-                  Dhrumil Patel
-                </motion.span>
-                <motion.span
-                  className="text-gray-900 dark:text-white inline-block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1, duration: 0.5 }}
-                >
-                  – Frontend Developer with Full-Stack Expertise.
-                </motion.span>
+                <span className="text-gray-900 dark:text-white">Hi, I'm </span>
+                <span className="gradient-text">Dhrumil Patel</span>
               </motion.h1>
+
+              {/* Typing Animation Subheading */}
+              <div className="h-10 sm:h-12 flex items-center justify-center">
+                <p className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200">
+                  <span>{typedText}</span>
+                  <span className="text-red-500 animate-pulse font-normal">|</span>
+                </p>
+              </div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
               >
-                Specializing in React.js & React Native. Building modern,
-                performant web experiences with clean code and pixel-perfect
-                design.
+                Crafting modern web applications, published Android applications,
+                and enterprise CRM & ERP business solutions. Specializing in
+                React.js, React Native, Node.js, and database engineering.
               </motion.p>
             </div>
 
@@ -214,46 +194,38 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.3, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-3.5 justify-center items-center pt-4"
             >
               <motion.a
-                href="#projects"
-                className="group px-8 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2 shadow-lg shadow-red-500/20"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                href="#apps"
+                className="w-full sm:w-auto px-7 py-3.5 bg-black hover:bg-neutral-900 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2.5 shadow-lg border border-white/20"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                View Work
-                <motion.div
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  <HiArrowRight className="transition-all" />
-                </motion.div>
+                <FaGooglePlay className="w-4 h-4 text-emerald-400" />
+                <span>Play Store App</span>
               </motion.a>
+
+              <motion.a
+                href="#live-projects"
+                className="w-full sm:w-auto px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <span>Live Projects</span>
+                <HiArrowRight className="w-4 h-4" />
+              </motion.a>
+
               <motion.a
                 href={resumePDF}
                 download="Dhrumil_Patel_Resume.pdf"
-                className="group px-8 py-3.5 bg-gray-100 dark:bg-dark-card border border-gray-300 dark:border-dark-border hover:border-red-500 text-gray-900 dark:text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto px-7 py-3.5 bg-white dark:bg-white/[0.04] border border-gray-300 dark:border-white/10 hover:border-red-500 text-gray-900 dark:text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <motion.div
-                  whileHover={{ y: [0, -3, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity }}
-                >
-                  <HiDownload className="w-5 h-5" />
-                </motion.div>
-                Download CV
-              </motion.a>
-              <motion.a
-                href="#contact"
-                className="px-8 py-3.5 border-2 border-gray-300 dark:border-dark-border hover:border-red-500 text-gray-900 dark:text-gray-300 hover:text-red-500 dark:hover:text-white rounded-lg font-medium transition-all duration-300 flex items-center gap-2"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <HiMail className="w-5 h-5" />
-                Get in Touch
+                <HiDownload className="w-4 h-4" />
+                <span>Resume</span>
               </motion.a>
             </motion.div>
 
@@ -262,14 +234,14 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="flex gap-4 justify-center pt-8 flex-wrap"
+              className="flex gap-4 justify-center pt-6 flex-wrap"
             >
               <a
                 href="https://github.com/dhrumil447"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
-                aria-label="GitHub"
+                aria-label="GitHub Profile"
               >
                 <FaGithub className="w-5 h-5" />
               </a>
@@ -278,28 +250,28 @@ const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
-                aria-label="LinkedIn"
+                aria-label="LinkedIn Profile"
               >
                 <FaLinkedin className="w-5 h-5" />
               </a>
               <a
                 href="mailto:dhrumil.447@gmail.com"
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300"
-                aria-label="Email"
+                aria-label="Email Dhrumil"
               >
                 <HiMail className="w-5 h-5" />
               </a>
               <button
                 onClick={copyEmail}
                 className="p-3 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors duration-300 relative group"
-                aria-label="Copy Email"
+                aria-label="Copy Email Address"
               >
                 {copied ? (
-                  <HiCheck className="w-5 h-5 text-green-500" />
+                  <HiCheck className="w-5 h-5 text-emerald-500" />
                 ) : (
                   <HiClipboardCopy className="w-5 h-5" />
                 )}
-                <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-100 dark:bg-dark-card border border-gray-300 dark:border-dark-border text-gray-900 dark:text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   {copied ? "Copied!" : "Copy Email"}
                 </span>
               </button>

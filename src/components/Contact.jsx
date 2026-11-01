@@ -237,7 +237,7 @@ const Contact = () => {
                 </h3>
               </div>
               <p className="text-gray-700 dark:text-gray-300">
-                Open to freelance projects and full-time opportunities
+                Open to freelance projects
               </p>
             </motion.div>
           </motion.div>

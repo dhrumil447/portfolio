@@ -91,18 +91,21 @@ const ChatBot = () => {
       lowerMessage.includes("experience") ||
       lowerMessage.includes("work") ||
       lowerMessage.includes("job") ||
-      lowerMessage.includes("arihant")
+      lowerMessage.includes("lemon") || lowerMessage.includes("walter")
     ) {
-      return "💼 Professional Experience:\n\n🏢 Arihant Solution - Frontend Developer\n📅 Duration: 9+ months (Current)\n\n🎯 Key Responsibilities:\n• React.js web application development\n• React Native mobile app development\n• RESTful API integration & implementation\n• UI/UX design collaboration\n• Modern UI library implementation\n• Performance optimization & debugging\n• Code review & best practices\n\n📊 Key Achievements:\n✅ 10+ successful project deliveries\n✅ 100% client satisfaction rate\n✅ Improved app performance by optimizing code\n✅ Implemented responsive designs for multiple devices\n\n🚀 Growth: From learning React to building production-ready applications with modern architecture!";
+      return "💼 Professional Experience:\n\n🏢 Lemon Software Solution - Software Developer (https://lemonsoftwaresolution.com/)\n📅 Duration: July 2026 – Present (Current)\n🏢 Previous Experience: Walter Technologies - Software Developer (https://waltertechnologies.com/)\n\n🎯 Key Responsibilities:\n• Web & mobile application development (React.js & React Native)\n• Enterprise CRM & ERP systems development\n• RESTful API integration & database engineering\n• RESTful API integration & implementation\n• UI/UX design collaboration\n• Modern UI library implementation\n• Performance optimization & debugging\n• Code review & best practices\n\n📊 Key Achievements:\n✅ 10+ successful project deliveries\n✅ 100% client satisfaction rate\n✅ Improved app performance by optimizing code\n✅ Implemented responsive designs for multiple devices\n\n🚀 Growth: From learning React to building production-ready applications with modern architecture!";
     }
 
     // Projects related
     if (
       lowerMessage.includes("project") ||
       lowerMessage.includes("portfolio") ||
-      lowerMessage.includes("work sample")
+      lowerMessage.includes("work sample") ||
+      lowerMessage.includes("moneyflow") ||
+      lowerMessage.includes("crm") ||
+      lowerMessage.includes("erp")
     ) {
-      return "🚀 Featured Projects Portfolio:\n\n1️⃣ DocBook App 📱\n   • Doctor appointment booking system\n   • Tech: React Native, API Integration\n   • Features: Real-time booking, notifications\n\n2️⃣ Admin Dashboard 💼\n   • Modern analytics dashboard\n   • Tech: React.js, Material UI, Charts\n   • Features: Data visualization, user management\n\n3️⃣ E-Commerce Platform 🛒\n   • Full-featured shopping application\n   • Tech: React.js, Redux, Payment API\n   • Features: Cart, checkout, order tracking\n\n4️⃣ Task Management App 📋\n   • Collaborative productivity tool\n   • Tech: React.js, Drag-and-drop\n   • Features: Team collaboration, deadlines\n\n5️⃣ Weather Forecast App 🌤️\n   • Beautiful weather interface\n   • Tech: React.js, Weather API\n   • Features: Real-time data, forecasts\n\n💡 Each project showcases modern design, clean code, and user-centric features!\n\n👉 Scroll up to view detailed project cards with live previews!";
+      return "🚀 Featured Projects Portfolio:\n\n1️⃣ MoneyFlow – Expense Tracker 📱 (Published App)\n   • Platform: Android (Google Play Store)\n   • Category: Personal Finance & Budget Planning\n   • Link: https://play.google.com/store/apps/details?id=com.moneyflow.managerapp\n\n2️⃣ Enterprise CRM System 💼 (Live Project)\n   • Customer & Lead Management, Sales Pipeline\n   • Tech: React.js, Material UI, Node.js, Express.js, MySQL\n\n3️⃣ Enterprise ERP System ⚙️ (Live Project)\n   • Inventory & Stock Management, Billing & Accounting\n   • Tech: React.js, Node.js, MySQL, REST APIs\n\n4️⃣ DocBook App 🏥 (Healthcare Mobile App)\n   • Doctor Appointment Booking\n   • Tech: React Native, Node.js, MySQL, REST APIs\n\n👉 Scroll to the 'Apps' and 'Live Projects' sections for full interactive showcases!";
     }
 
     // Contact related
@@ -112,7 +115,7 @@ const ChatBot = () => {
       lowerMessage.includes("reach") ||
       lowerMessage.includes("hire")
     ) {
-      return "📞 Contact Information:\n\n📧 Email: dhrumil@example.com\n💼 LinkedIn: linkedin.com/in/dhrumilpatel\n🐙 GitHub: github.com/dhrumilpatel\n📱 Phone: Available upon request\n\n🎯 Current Status:\n✅ Available for work\n✅ Open to new opportunities\n✅ Remote & On-site options\n\n💡 Best Ways to Connect:\n1. Send an email for project inquiries\n2. Connect on LinkedIn for networking\n3. Check GitHub for code samples\n4. Use the contact form above for quick reach\n\n⚡ Response Time: Usually within 24 hours!\n\n🤝 Let's build something amazing together!";
+      return "📞 Contact Information:\n\n📧 Email: dhrumil.447@gmail.com\n💼 LinkedIn: linkedin.com/in/dhrumilpatel\n🐙 GitHub: github.com/dhrumilpatel\n📱 Phone: Available upon request\n\n🎯 Current Status:\n✅ Available for work\n✅ Open to new opportunities\n✅ Remote & On-site options\n\n💡 Best Ways to Connect:\n1. Send an email for project inquiries\n2. Connect on LinkedIn for networking\n3. Check GitHub for code samples\n4. Use the contact form above for quick reach\n\n⚡ Response Time: Usually within 24 hours!\n\n🤝 Let's build something amazing together!";
     }
 
     // Learning & Education
@@ -142,7 +145,7 @@ const ChatBot = () => {
       lowerMessage.includes("start") ||
       lowerMessage.includes("join")
     ) {
-      return "📅 Availability Status:\n\n✅ CURRENTLY AVAILABLE\n\n🎯 Work Preferences:\n• Full-time positions\n• Contract projects (3+ months)\n• Remote work (preferred)\n• Hybrid/On-site (negotiable)\n\n⏰ Notice Period:\n• Can start immediately for the right opportunity\n• Flexible with start dates\n\n🌍 Location:\n• Open to remote positions worldwide\n• Available for on-site in [Location]\n\n💼 Looking for:\n• React.js/React Native roles\n• Frontend Developer positions\n• Full Stack opportunities\n• Innovative product companies\n\n📧 Let's discuss your opportunity!";
+      return "📅 Availability Status:\n\n✅ CURRENTLY AVAILABLE\n\n🎯 Work Preferences:\n• Freelance projects\n• Contract development\n• Remote work (preferred)\n• Hybrid/On-site (negotiable)\n\n⏰ Notice Period:\n• Can start immediately for the right opportunity\n• Flexible with start dates\n\n🌍 Location:\n• Open to remote positions worldwide\n• Available for on-site in [Location]\n\n💼 Looking for:\n• React.js/React Native roles\n• Frontend Developer positions\n• Full Stack opportunities\n• Innovative product companies\n\n📧 Let's discuss your opportunity!";
     }
 
     // React specific
@@ -164,7 +167,7 @@ const ChatBot = () => {
     const defaultResponses = [
       "That's an interesting question! 🤔\n\nI'm an AI assistant trained on Dhrumil's portfolio. I can help you with:\n\n💻 Technical skills & expertise\n💼 Work experience & achievements\n🚀 Project portfolio & case studies\n📧 Contact information\n🎯 Availability & job opportunities\n💡 Learning journey & soft skills\n\nTry asking: 'What are his React skills?' or 'Tell me about his projects'\n\nWhat would you like to explore?",
       "I'd be happy to help you learn more about Dhrumil! 😊\n\n🎯 Quick Menu:\n\n1️⃣ Skills & Technologies\n2️⃣ Work Experience\n3️⃣ Projects Portfolio\n4️⃣ Contact & Availability\n5️⃣ Education & Learning\n6️⃣ Soft Skills & Personality\n\n💡 Pro Tip: You can also paste a job description for a match analysis!\n\nWhat interests you most?",
-      "Hey there! 👋\n\nDhrumil is a Frontend Developer with 9+ months of experience specializing in React.js and React Native.\n\n✨ Quick Facts:\n• 10+ successful projects\n• 100% client satisfaction\n• Modern tech stack\n• Currently available\n\n🎯 What would you like to know?\n\n💬 Ask me about specific skills, projects, experience, or how to get in touch!",
+      "Hey there! 👋\n\nDhrumil is a Software Developer at Lemon Software Solution specializing in Web, Mobile, CRM & ERP Systems.\n\n✨ Quick Facts:\n• 10+ successful projects\n• 100% client satisfaction\n• Modern tech stack\n• Currently available\n\n🎯 What would you like to know?\n\n💬 Ask me about specific skills, projects, experience, or how to get in touch!",
     ];
 
     return defaultResponses[

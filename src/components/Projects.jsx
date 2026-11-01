@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { HiExternalLink, HiCode } from "react-icons/hi";
+import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
 
 const Projects = () => {
@@ -11,74 +11,24 @@ const Projects = () => {
   const projects = [
     {
       title: "DocBook App",
+      category: "Healthcare Mobile Application",
       description:
-        "A comprehensive doctor appointment booking application with real-time availability, patient management, and secure authentication. Built with React Native for seamless cross-platform experience.",
-      techStack: ["React Native", "Node.js", "MySQL", "REST API"],
+        "A comprehensive doctor appointment booking application featuring real-time schedule availability, patient records management, and secure authentication. Built with React Native for cross-platform performance across iOS and Android.",
+      techStack: ["React Native", "Node.js", "MySQL", "REST APIs"],
       image:
         "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
       liveLink: "https://github.com/dhrumil447/DocBook.git",
       githubLink: "https://github.com/dhrumil447/DocBook.git",
-      featured: true,
     },
-    // {
-    //   title: "Admin Dashboard",
-    //   description:
-    //     "Modern and responsive admin dashboard with analytics, user management, and data visualization. Features dark mode, real-time updates, and intuitive UI.",
-    //   techStack: ["React.js", "Material UI", "Chart.js", "REST API"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-    //   liveLink: "#",
-    //   githubLink: "#",
-    //   featured: true,
-    // },
-    // {
-    //   title: "E-Commerce Platform",
-    //   description:
-    //     "Full-featured e-commerce application with product catalog, shopping cart, payment integration, and order tracking. Optimized for performance and user experience.",
-    //   techStack: ["React.js", "Redux", "Bootstrap", "Node.js"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop",
-    //   liveLink: "#",
-    //   githubLink: "#",
-    //   featured: false,
-    // },
-    // {
-    //   title: "Task Management App",
-    //   description:
-    //     "Collaborative task management application with drag-and-drop functionality, team collaboration features, and progress tracking. Clean and intuitive interface.",
-    //   techStack: ["React.js", "Tailwind CSS", "Firebase"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=500&fit=crop",
-    //   liveLink: "#",
-    //   githubLink: "#",
-    //   featured: false,
-    // },
-    // {
-    //   title: "Weather Forecast App",
-    //   description:
-    //     "Beautiful weather application with 7-day forecast, location-based weather data, and stunning UI. Features smooth animations and real-time updates.",
-    //   techStack: ["React Native", "Weather API", "Styled Components"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop",
-    //   liveLink: "#",
-    //   githubLink: "#",
-    //   featured: false,
-    // },
-    // {
-    //   title: "Portfolio CMS",
-    //   description:
-    //     "Content Management System for portfolio websites with drag-and-drop builder, template customization, and SEO optimization tools.",
-    //   techStack: ["React.js", "Node.js", "MongoDB", "Material UI"],
-    //   image:
-    //     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    //   liveLink: "#",
-    //   githubLink: "#",
-    //   featured: false,
-    // },
   ];
 
   return (
-    <section id="projects" className="section-container" ref={ref}>
+    <section
+      id="projects"
+      className="section-container relative"
+      ref={ref}
+      aria-label="Other Featured Projects"
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -86,94 +36,111 @@ const Projects = () => {
       >
         {/* Section Header */}
         <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4"
+          >
+            <span>Additional Work</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
             className="text-4xl sm:text-5xl font-bold mb-4"
           >
-            My <span className="gradient-text">Projects</span>
+            Featured <span className="gradient-text">Projects</span>
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
-            className="mt-4 text-gray-400 text-lg max-w-2xl mx-auto"
+            transition={{ delay: 0.3 }}
+            className="mt-3 text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl mx-auto"
           >
-            Projects I worked on. Each of them containing its own case study.
+            Cross-platform applications and software implementations built with
+            modern development practices.
           </motion.p>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : {}}
+            transition={{ delay: 0.4 }}
+            className="w-20 h-1 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full mt-4"
+          />
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3 },
-              }}
-              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:border-gray-300 dark:hover:border-white/20 transition-all duration-300 group"
+              transition={{ delay: 0.3, duration: 0.5 }}
+              whileHover={{ y: -6 }}
+              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-xl dark:shadow-2xl hover:border-red-500/30 transition-all duration-300 group"
             >
               {/* Project Image */}
-              <div className="relative overflow-hidden h-64">
-                <motion.img
+              <div className="relative overflow-hidden h-64 sm:h-72">
+                <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-6">
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-red-600 text-white shadow-md">
+                    {project.category}
+                  </span>
+                </div>
               </div>
 
               {/* Project Details */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
                   {project.description}
                 </p>
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.techStack.map((tech, techIndex) => (
-                    <motion.span
+                    <span
                       key={techIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{
-                        delay: 0.5 + index * 0.1 + techIndex * 0.05,
-                      }}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="px-3 py-1.5 text-sm font-medium bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white border border-gray-300 dark:border-white/10 rounded-lg cursor-default"
+                      className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-white/10 rounded-lg"
                     >
                       {tech}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 
-                {/* Preview Button */}
-                <motion.a
-                  href={project.liveLink}
-                  className="inline-flex items-center gap-2 text-gray-900 dark:text-white hover:text-red-500 transition-colors group"
-                  whileHover={{ x: 5 }}
-                >
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                {/* Links */}
+                <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-white/10">
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-colors"
+                  >
+                    <FaGithub className="w-4 h-4" />
+                    <span>View Repository</span>
+                  </a>
+
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-red-500 transition-colors"
                   >
                     <HiExternalLink className="w-4 h-4" />
-                  </motion.div>
-                  <span className="text-sm font-medium">Preview</span>
-                </motion.a>
+                    <span>Source & Case Study</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}

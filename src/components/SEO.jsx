@@ -10,11 +10,11 @@ const SEO = ({
   twitterCard = "summary_large_image",
 }) => {
   const defaultTitle =
-    "Dhrumil Patel - Frontend Developer Portfolio | React & React Native Specialist";
+    "Dhrumil Patel - Software Developer Portfolio | React, React Native, CRM & ERP Specialist";
   const defaultDescription =
-    "Professional frontend developer portfolio showcasing modern web and mobile applications built with React.js, React Native, and JavaScript. Explore my projects, skills, and experience.";
+    "Software Developer portfolio of Dhrumil Patel (Software Developer at Lemon Software Solution). Showcasing published Google Play Android apps, enterprise CRM & ERP systems, and modern web applications built with React.js, React Native, Node.js, and modern databases.";
   const defaultKeywords =
-    "portfolio, frontend developer, React developer, React Native, JavaScript, web development, mobile app development";
+    "portfolio, software developer, Dhrumil Patel, Lemon Software Solution, MoneyFlow expense tracker, React developer, React Native developer, CRM developer, ERP developer, JavaScript, TypeScript, Node.js, Android apps, web applications";
   const siteUrl = "https://dhrumiilportfolio.netlify.app";
   const defaultImage = `${siteUrl}/og-image.jpg`;
 

@@ -5,8 +5,10 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import Projects from "./components/Projects";
 import Experience from "./components/Experience";
+import PublishedApps from "./components/PublishedApps";
+import LiveProjects from "./components/LiveProjects";
+import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
@@ -14,13 +16,11 @@ import SEO from "./components/SEO";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    // Initialize state from localStorage
     const savedMode = localStorage.getItem("darkMode");
     return savedMode === null ? true : savedMode === "true";
   });
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Apply dark mode class to document
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -55,6 +55,8 @@ function App() {
       <About />
       <Skills />
       <Experience />
+      <PublishedApps />
+      <LiveProjects />
       <Projects />
       <Contact />
       <Footer />

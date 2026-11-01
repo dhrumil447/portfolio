@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { HiCode, HiLightningBolt, HiHeart, HiDownload } from "react-icons/hi";
+import {
+  HiCode,
+  HiLightningBolt,
+  HiHeart,
+  HiDownload,
+  HiExternalLink,
+  HiServer,
+  HiDeviceMobile,
+} from "react-icons/hi";
 import profileImage from "../img/WhatsApp Image 2026-01-28 at 9.29.22 PM.jpeg";
 import resumePDF from "../img/resume.pdf";
 
@@ -11,28 +19,31 @@ const About = () => {
 
   const highlights = [
     {
+      icon: <HiDeviceMobile className="w-6 h-6" />,
+      title: "Web & Mobile Apps",
+      description:
+        "Building responsive web apps with React.js and published cross-platform mobile apps with React Native.",
+    },
+    {
+      icon: <HiServer className="w-6 h-6" />,
+      title: "CRM & ERP Systems",
+      description:
+        "Architecting enterprise business solutions, sales pipelines, stock tracking, and automated billing workflows.",
+    },
+    {
       icon: <HiCode className="w-6 h-6" />,
-      title: "Clean Code",
-      description: "Writing maintainable, scalable, and well-documented code",
-    },
-    {
-      icon: <HiLightningBolt className="w-6 h-6" />,
-      title: "Performance",
-      description: "Optimized applications for lightning-fast user experiences",
-    },
-    {
-      icon: <HiHeart className="w-6 h-6" />,
-      title: "User-Centric",
-      description: "Crafting intuitive interfaces that users love",
+      title: "Clean Architecture",
+      description:
+        "Developing scalable, maintainable codebases with robust RESTful APIs and optimized database schemas.",
     },
   ];
 
   return (
     <section
       id="about"
-      className="section-container"
+      className="section-container relative"
       ref={ref}
-      aria-label="About Dhrumil Patel - Frontend Developer"
+      aria-label="About Dhrumil Patel - Software Developer"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -41,6 +52,15 @@ const About = () => {
       >
         {/* Section Header */}
         <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4"
+          >
+            <span>Background & Expertise</span>
+          </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -49,11 +69,12 @@ const About = () => {
           >
             About <span className="gradient-text">Me</span>
           </motion.h2>
+
           <motion.div
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ delay: 0.4 }}
-            className="w-20 h-1 bg-gradient-to-r from-primary-light to-purple-600 mx-auto rounded-full"
+            className="w-20 h-1 bg-gradient-to-r from-red-500 to-pink-500 mx-auto rounded-full"
           />
         </div>
 
@@ -66,21 +87,22 @@ const About = () => {
             className="flex justify-center md:justify-start"
           >
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary-light to-purple-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-300"></div>
-              <div className="relative glass-card p-4 rounded-3xl">
-                <div className="w-full max-w-md aspect-square rounded-2xl overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-pink-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-300" />
+              <div className="relative glass-card p-4 rounded-3xl border border-gray-200 dark:border-white/10">
+                <div className="w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-neutral-900">
                   <img
                     src={profileImage}
-                    alt="Dhrumil Patel - Professional Frontend Developer specializing in React.js and React Native"
+                    alt="Dhrumil Patel - Software Developer at Lemon Software Solution"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
-                {/* Decorative Elements */}
-                <div className="absolute -bottom-4 -right-4 glass-card px-6 py-3 rounded-xl shadow-lg">
-                  <p className="text-sm font-bold gradient-text">9+ Months</p>
+
+                {/* Decorative Badge */}
+                <div className="absolute -bottom-4 -right-4 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-white/10 px-5 py-3 rounded-2xl shadow-xl">
+                  <p className="text-sm font-bold gradient-text">Software Developer</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
-                    Experience
+                    Lemon Software Solution
                   </p>
                 </div>
               </div>
@@ -94,116 +116,117 @@ const About = () => {
             transition={{ delay: 0.4 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white">
-              Frontend Developer with a Passion for Excellence
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white leading-tight">
+              Software Developer specializing in Web, Mobile, CRM & ERP Systems
             </h3>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              I'm a Frontend Developer currently working at{" "}
-              <span className="font-semibold text-primary-light">
-                Arihant Solution
-              </span>
-              , where I've been building modern web and mobile applications for
-              the past 9 months.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+              I am a Software Developer currently working at{" "}
+              <a
+                href="https://lemonsoftwaresolution.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-red-600 dark:text-red-400 hover:underline inline-flex items-center gap-1"
+              >
+                Lemon Software Solution
+                <HiExternalLink className="w-4 h-4 inline" />
+              </a>{" "}
+              (July 2026 – Present), where I engineer web applications, mobile
+              applications, enterprise CRM systems, ERP platforms, and scalable
+              business software solutions.
             </p>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              My expertise lies in creating responsive, performant, and visually
-              stunning user interfaces using{" "}
-              <span className="font-semibold text-primary-light">React.js</span>{" "}
-              and{" "}
-              <span className="font-semibold text-primary-light">
-                React Native
-              </span>
-              . I specialize in transforming complex designs into pixel-perfect
-              implementations, integrating RESTful APIs seamlessly, and ensuring
-              an exceptional user experience across all devices.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+              Prior to joining Lemon Software Solution, I honed my engineering
+              foundation at{" "}
+              <a
+                href="https://waltertechnologies.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-red-600 dark:text-red-400 hover:underline inline-flex items-center gap-1"
+              >
+                Walter Technologies
+                <HiExternalLink className="w-3.5 h-3.5 inline" />
+              </a>
+              , where I developed responsive web applications, modular frontend
+              architectures, and integrated REST APIs.
             </p>
 
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              I believe in writing clean, maintainable code and staying
-              up-to-date with the latest frontend technologies and best
-              practices. My goal is to build products that not only look great
-              but also solve real problems and deliver tangible value to users.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+              My technical expertise spans modern frontend frameworks (React.js,
+              Material UI, Tailwind CSS), cross-platform mobile development (React
+              Native with published applications on Google Play), server-side
+              technologies (Node.js, Express.js, REST APIs), and databases (MySQL,
+              MongoDB). I focus on writing clean, scalable code that streamlines
+              complex business operations and delivers intuitive user experiences.
             </p>
 
-            <div className="flex flex-wrap gap-3 pt-4">
-              <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
-                9+ Months Experience
+            <div className="flex flex-wrap gap-2.5 pt-2">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+                July 2026 – Present @ Lemon Software Solution
               </span>
-              {/* <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
-                10+ Projects
-              </span> */}
-              <span className="px-4 py-2 glass-card rounded-full text-sm font-medium">
-                React Specialist
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+                Published Play Store App
+              </span>
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+                CRM & ERP Development
+              </span>
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+                Prev: Walter Technologies
               </span>
             </div>
 
-            <motion.a
-              href={resumePDF}
-              download="Dhrumil_Patel_Resume.pdf"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 mt-6 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <HiDownload className="w-6 h-6" />
-              Download Full Resume
-            </motion.a>
+            <div className="pt-2">
+              <motion.a
+                href={resumePDF}
+                download="Dhrumil_Patel_Resume.pdf"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-lg shadow-red-500/20 hover:shadow-xl transition-all duration-300"
+              >
+                <HiDownload className="w-5 h-5" />
+                <span>Download Resume</span>
+              </motion.a>
+            </div>
           </motion.div>
-
-          {/* Highlights Cards */}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
+        {/* Highlights Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mt-16">
           {highlights.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="glass-card p-6 rounded-2xl card-hover group text-center"
+              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 rounded-2xl shadow-lg dark:shadow-xl hover:border-red-500/30 transition-all text-center group"
             >
               <div className="flex justify-center mb-4">
-                <motion.div
-                  className="p-4 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl text-white"
-                  whileHover={{
-                    scale: 1.2,
-                    rotate: [0, -10, 10, -10, 0],
-                    transition: { duration: 0.5 },
-                  }}
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }}
-                >
+                <div className="p-3.5 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl text-white shadow-md group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
-                </motion.div>
+                </div>
               </div>
-              <h4 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">
+              <h4 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
                 {item.title}
               </h4>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                 {item.description}
               </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional Info Card */}
+        {/* Additional Quote Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.9 }}
-          className="mt-12 text-center glass-card p-8 rounded-2xl max-w-4xl mx-auto bg-gradient-to-br from-primary-light/10 to-purple-600/10 border-2 border-primary-light/20"
+          transition={{ delay: 0.8 }}
+          className="mt-12 text-center p-8 rounded-2xl max-w-4xl mx-auto bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 border border-red-500/20"
         >
-          <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed italic">
-            "Always eager to learn, adapt, and take on new challenges. I thrive
-            in collaborative environments and enjoy turning complex problems
-            into elegant solutions."
+          <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed italic">
+            "Driven by creating impact through clean code, structured software
+            architecture, and responsive products that solve genuine enterprise
+            and consumer challenges."
           </p>
         </motion.div>
       </motion.div>
