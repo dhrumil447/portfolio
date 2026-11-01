@@ -1,11 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
 
-# Sitemap location
+# Canonical Sitemap location
 Sitemap: https://dhrumiilportfolio.netlify.app/sitemap.xml
-
-# Crawl-delay for bots (optional, helps prevent server overload)
-Crawl-delay: 1

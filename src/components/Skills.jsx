@@ -19,6 +19,7 @@ import {
   SiVisualstudiocode,
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
+import TiltCard from "./TiltCard";
 
 const Skills = () => {
   const ref = useRef(null);
@@ -146,7 +147,7 @@ const Skills = () => {
           />
         </div>
 
-        {/* Skills Grid */}
+        {/* 3D Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
@@ -154,51 +155,60 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 + categoryIndex * 0.1 }}
-              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-lg dark:shadow-xl hover:border-red-500/30 transition-all duration-300 flex flex-col justify-between group"
+              className="h-full"
             >
-              <div>
-                <div className="mb-6 pb-3 border-b border-gray-100 dark:border-white/10">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {category.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                    {category.subtitle}
-                  </p>
-                </div>
+              <TiltCard
+                maxTilt={8}
+                scale={1.02}
+                className="h-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl p-6 shadow-xl dark:shadow-2xl hover:border-red-500/30 transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    style={{ transform: "translateZ(20px)" }}
+                    className="mb-6 pb-3 border-b border-gray-100 dark:border-white/10"
+                  >
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {category.title}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                      {category.subtitle}
+                    </p>
+                  </div>
 
-                <div className="space-y-3.5">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      initial={{ opacity: 0, x: -15 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{
-                        delay: 0.4 + categoryIndex * 0.1 + skillIndex * 0.04,
-                      }}
-                      className="flex items-center gap-3.5 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-all group/item"
-                    >
-                      <div
-                        className={`text-2xl sm:text-3xl ${skill.color} group-hover/item:scale-125 transition-transform duration-300 shrink-0`}
+                  <div
+                    style={{ transform: "translateZ(15px)" }}
+                    className="space-y-3"
+                  >
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skillIndex}
+                        whileHover={{ x: 6, scale: 1.03 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                        className="flex items-center gap-3.5 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-all group/item cursor-pointer"
                       >
-                        {skill.icon}
-                      </div>
-                      <span className="text-gray-700 dark:text-gray-300 font-medium text-sm group-hover/item:text-red-500 dark:group-hover/item:text-red-400 transition-colors">
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                  ))}
+                        <div
+                          className={`text-2xl sm:text-3xl ${skill.color} group-hover/item:scale-125 transition-transform duration-300 shrink-0 drop-shadow-sm`}
+                        >
+                          {skill.icon}
+                        </div>
+                        <span className="text-gray-700 dark:text-gray-300 font-medium text-sm group-hover/item:text-red-500 dark:group-hover/item:text-red-400 transition-colors">
+                          {skill.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom Banner */}
+        {/* Bottom Banner with Subtle Depth */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="mt-12 text-center p-6 sm:p-8 bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl max-w-3xl mx-auto shadow-md"
+          className="mt-12 text-center p-6 sm:p-8 bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl max-w-3xl mx-auto shadow-md backdrop-blur-xl"
         >
           <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
             Consistently applying modern engineering standards—from reusable

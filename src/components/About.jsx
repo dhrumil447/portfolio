@@ -3,8 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   HiCode,
-  HiLightningBolt,
-  HiHeart,
   HiDownload,
   HiExternalLink,
   HiServer,
@@ -12,6 +10,7 @@ import {
 } from "react-icons/hi";
 import profileImage from "../img/WhatsApp Image 2026-01-28 at 9.29.22 PM.jpeg";
 import resumePDF from "../img/resume.pdf";
+import TiltCard from "./TiltCard";
 
 const About = () => {
   const ref = useRef(null);
@@ -79,7 +78,7 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Profile Image */}
+          {/* Left Side - 3D Profile Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -87,9 +86,17 @@ const About = () => {
             className="flex justify-center md:justify-start"
           >
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-pink-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-300" />
-              <div className="relative glass-card p-4 rounded-3xl border border-gray-200 dark:border-white/10">
-                <div className="w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-neutral-900">
+              <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-pink-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-40 transition duration-300 pointer-events-none" />
+
+              <TiltCard
+                maxTilt={10}
+                scale={1.03}
+                className="relative bg-white dark:bg-white/[0.03] p-4 rounded-3xl border border-gray-200 dark:border-white/10 shadow-2xl backdrop-blur-xl"
+              >
+                <div
+                  style={{ transform: "translateZ(20px)" }}
+                  className="w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-neutral-900"
+                >
                   <img
                     src={profileImage}
                     alt="Dhrumil Patel - Software Developer at Lemon Software Solution"
@@ -98,14 +105,17 @@ const About = () => {
                   />
                 </div>
 
-                {/* Decorative Badge */}
-                <div className="absolute -bottom-4 -right-4 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-white/10 px-5 py-3 rounded-2xl shadow-xl">
+                {/* 3D Decorative Badge */}
+                <div
+                  style={{ transform: "translateZ(35px)" }}
+                  className="absolute -bottom-4 -right-4 bg-white dark:bg-neutral-900 border border-gray-200 dark:border-white/10 px-5 py-3 rounded-2xl shadow-xl"
+                >
                   <p className="text-sm font-bold gradient-text">Software Developer</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
                     Lemon Software Solution
                   </p>
                 </div>
-              </div>
+              </TiltCard>
             </div>
           </motion.div>
 
@@ -162,16 +172,16 @@ const About = () => {
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 shadow-sm">
                 July 2026 – Present @ Lemon Software Solution
               </span>
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 shadow-sm">
                 Published Play Store App
               </span>
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 shadow-sm">
                 CRM & ERP Development
               </span>
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 shadow-sm">
                 Prev: Walter Technologies
               </span>
             </div>
@@ -180,9 +190,9 @@ const About = () => {
               <motion.a
                 href={resumePDF}
                 download="Dhrumil_Patel_Resume.pdf"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-lg shadow-red-500/20 hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-lg shadow-red-500/25 hover:shadow-xl transition-all duration-300"
               >
                 <HiDownload className="w-5 h-5" />
                 <span>Download Resume</span>
@@ -191,7 +201,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Highlights Cards */}
+        {/* 3D Highlights Cards */}
         <div className="grid md:grid-cols-3 gap-6 mt-16">
           {highlights.map((item, index) => (
             <motion.div
@@ -199,19 +209,30 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 rounded-2xl shadow-lg dark:shadow-xl hover:border-red-500/30 transition-all text-center group"
             >
-              <div className="flex justify-center mb-4">
-                <div className="p-3.5 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                  {item.icon}
+              <TiltCard
+                maxTilt={8}
+                scale={1.03}
+                className="h-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 p-6 rounded-3xl shadow-xl dark:shadow-2xl hover:border-red-500/30 transition-all text-center group"
+              >
+                <div
+                  style={{ transform: "translateZ(25px)" }}
+                  className="flex justify-center mb-4"
+                >
+                  <div className="p-3.5 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    {item.icon}
+                  </div>
                 </div>
-              </div>
-              <h4 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
-                {item.title}
-              </h4>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                {item.description}
-              </p>
+                <h4
+                  style={{ transform: "translateZ(15px)" }}
+                  className="text-lg font-bold mb-2 text-gray-900 dark:text-white"
+                >
+                  {item.title}
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
@@ -221,7 +242,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8 }}
-          className="mt-12 text-center p-8 rounded-2xl max-w-4xl mx-auto bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 border border-red-500/20"
+          className="mt-12 text-center p-8 rounded-2xl max-w-4xl mx-auto bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 border border-red-500/20 backdrop-blur-xl"
         >
           <p className="text-gray-700 dark:text-gray-300 text-base sm:text-lg leading-relaxed italic">
             "Driven by creating impact through clean code, structured software

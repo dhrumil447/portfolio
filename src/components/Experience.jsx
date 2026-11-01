@@ -7,6 +7,7 @@ import {
   HiLocationMarker,
   HiExternalLink,
 } from "react-icons/hi";
+import TiltCard from "./TiltCard";
 
 const Experience = () => {
   const ref = useRef(null);
@@ -74,7 +75,7 @@ const Experience = () => {
     },
     {
       number: "100%",
-      label: "Commitment to Clean Code",
+      label: "Clean Code Commitment",
     },
   ];
 
@@ -139,16 +140,16 @@ const Experience = () => {
               transition={{ delay: 0.3 + index * 0.2 }}
               className="relative pl-8 sm:pl-12 pb-16 last:pb-0"
             >
-              {/* Timeline Connector Line */}
+              {/* Luminous Animated Timeline Connector */}
               {index < experiences.length - 1 && (
                 <div className="absolute left-[15px] sm:left-[23px] top-10 bottom-0 w-0.5 bg-gradient-to-b from-red-500 via-pink-500 to-gray-300 dark:to-neutral-800" />
               )}
 
-              {/* Timeline Indicator Dot */}
+              {/* Timeline Indicator Beacon */}
               <div
-                className={`absolute left-1.5 sm:left-3 top-2 w-7 h-7 rounded-full flex items-center justify-center border-2 ${
+                className={`absolute left-1.5 sm:left-3 top-2 w-7 h-7 rounded-full flex items-center justify-center border-2 transition-all ${
                   exp.current
-                    ? "bg-red-600 border-white text-white shadow-lg shadow-red-500/30"
+                    ? "bg-red-600 border-white text-white shadow-xl shadow-red-500/40"
                     : "bg-gray-100 dark:bg-neutral-800 border-gray-400 dark:border-neutral-600 text-gray-500"
                 }`}
               >
@@ -159,12 +160,19 @@ const Experience = () => {
                 )}
               </div>
 
-              {/* Card Container */}
-              <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-lg dark:shadow-xl hover:border-red-500/30 transition-all duration-300 group ml-2 sm:ml-4">
+              {/* 3D Tilt Card Container */}
+              <TiltCard
+                maxTilt={6}
+                scale={1.015}
+                className="ml-2 sm:ml-4 bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl dark:shadow-2xl hover:border-red-500/30 transition-all duration-300 group"
+              >
                 {/* Header: Company & Badge */}
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                <div
+                  style={{ transform: "translateZ(20px)" }}
+                  className="flex flex-wrap items-center justify-between gap-3 mb-3"
+                >
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl">
+                    <div className="p-2.5 bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl shadow-sm">
                       <HiBriefcase className="w-5 h-5" />
                     </div>
 
@@ -195,7 +203,7 @@ const Experience = () => {
 
                   <div className="flex items-center gap-2">
                     <span
-                      className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      className={`px-3 py-1 text-xs font-semibold rounded-full shadow-sm ${
                         exp.current
                           ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
                           : "bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/10"
@@ -207,7 +215,10 @@ const Experience = () => {
                 </div>
 
                 {/* Job Title & Period */}
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-100 dark:border-white/5">
+                <div
+                  style={{ transform: "translateZ(15px)" }}
+                  className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-gray-100 dark:border-white/5"
+                >
                   <h4 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white">
                     {exp.title}
                   </h4>
@@ -223,7 +234,7 @@ const Experience = () => {
                 </p>
 
                 {/* Technologies */}
-                <div>
+                <div style={{ transform: "translateZ(20px)" }}>
                   <h5 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2.5">
                     Technologies Used
                   </h5>
@@ -231,19 +242,19 @@ const Experience = () => {
                     {exp.technologies.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-white/10 rounded-lg hover:border-red-500/30 transition-colors"
+                        className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-white/10 rounded-lg hover:border-red-500/30 transition-colors shadow-sm"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
 
-        {/* Highlights Banner */}
+        {/* Highlights Banner with 3D Depth */}
         <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto mt-12">
           {highlights.map((item, idx) => (
             <motion.div
@@ -251,14 +262,19 @@ const Experience = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 + idx * 0.1 }}
-              className="p-5 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center shadow-md"
             >
-              <div className="text-2xl font-extrabold gradient-text">
-                {item.number}
-              </div>
-              <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mt-1">
-                {item.label}
-              </div>
+              <TiltCard
+                maxTilt={8}
+                scale={1.03}
+                className="p-5 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-center shadow-lg"
+              >
+                <div className="text-2xl font-extrabold gradient-text">
+                  {item.number}
+                </div>
+                <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mt-1">
+                  {item.label}
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

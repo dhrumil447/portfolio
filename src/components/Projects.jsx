@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { HiExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
+import TiltCard from "./TiltCard";
 
 const Projects = () => {
   const ref = useRef(null);
@@ -72,7 +73,7 @@ const Projects = () => {
           />
         </div>
 
-        {/* Projects Grid */}
+        {/* 3D Projects Grid */}
         <div className="max-w-3xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
@@ -80,68 +81,78 @@ const Projects = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.5 }}
-              whileHover={{ y: -6 }}
-              className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-xl dark:shadow-2xl hover:border-red-500/30 transition-all duration-300 group"
             >
-              {/* Project Image */}
-              <div className="relative overflow-hidden h-64 sm:h-72">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-4 left-6">
-                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-red-600 text-white shadow-md">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Project Details */}
-              <div className="p-6 sm:p-8">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
-                  {project.title}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-white/10 rounded-lg"
-                    >
-                      {tech}
+              <TiltCard
+                maxTilt={8}
+                scale={1.02}
+                className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl hover:border-red-500/30 transition-all duration-300 group"
+              >
+                {/* Project Image */}
+                <div className="relative overflow-hidden h-64 sm:h-72">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div
+                    style={{ transform: "translateZ(30px)" }}
+                    className="absolute bottom-4 left-6"
+                  >
+                    <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-red-600 text-white shadow-lg">
+                      {project.category}
                     </span>
-                  ))}
+                  </div>
                 </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-white/10">
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-colors"
-                  >
-                    <FaGithub className="w-4 h-4" />
-                    <span>View Repository</span>
-                  </a>
+                {/* Project Details */}
+                <div
+                  style={{ transform: "translateZ(20px)" }}
+                  className="p-6 sm:p-8"
+                >
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
+                    {project.description}
+                  </p>
 
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-red-500 transition-colors"
-                  >
-                    <HiExternalLink className="w-4 h-4" />
-                    <span>Source & Case Study</span>
-                  </a>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-gray-300 border border-gray-200 dark:border-white/10 rounded-lg shadow-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-white/10">
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-black text-white text-xs font-semibold rounded-lg transition-colors shadow-md"
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      <span>View Repository</span>
+                    </a>
+
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-red-500 transition-colors"
+                    >
+                      <HiExternalLink className="w-4 h-4" />
+                      <span>Source & Case Study</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

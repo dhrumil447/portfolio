@@ -12,13 +12,14 @@ import {
   FaCheckCircle,
   FaExternalLinkAlt,
 } from "react-icons/fa";
-import { HiDownload, HiX, HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { HiX, HiChevronLeft, HiChevronRight, HiSparkles } from "react-icons/hi";
 
 import appIcon from "../img/moneyflow/icon.png";
 import shot1 from "../img/moneyflow/screenshot-1.png";
 import shot2 from "../img/moneyflow/screenshot-2.png";
 import shot3 from "../img/moneyflow/screenshot-3.png";
 import shot4 from "../img/moneyflow/screenshot-4.png";
+import TiltCard from "./TiltCard";
 
 const PublishedApps = () => {
   const ref = useRef(null);
@@ -121,9 +122,13 @@ const PublishedApps = () => {
           />
         </div>
 
-        {/* Main App Showcase Card */}
-        <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl dark:shadow-2xl relative overflow-hidden backdrop-blur-xl">
-          {/* Subtle Ambient Glow */}
+        {/* Main 3D App Showcase Card */}
+        <TiltCard
+          maxTilt={5}
+          scale={1.01}
+          className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl"
+        >
+          {/* Ambient Glows */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
 
@@ -133,15 +138,15 @@ const PublishedApps = () => {
               {/* App Header: Icon + Title + Meta */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
                 <motion.div
-                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  whileHover={{ scale: 1.06, rotate: 2 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   className="relative group shrink-0"
                 >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur-md opacity-40 group-hover:opacity-75 transition duration-300" />
+                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur-md opacity-40 group-hover:opacity-80 transition duration-300" />
                   <img
                     src={appIcon}
                     alt="MoneyFlow – Expense Tracker App Icon"
-                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-xl border border-white/20 bg-black"
+                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-2xl border border-white/20 bg-black"
                   />
                   <span className="absolute -bottom-2 -right-2 p-1.5 bg-emerald-600 text-white rounded-full text-xs shadow-md">
                     <FaCheckCircle className="w-3.5 h-3.5" />
@@ -150,7 +155,8 @@ const PublishedApps = () => {
 
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                    <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       Live on Play Store
                     </span>
                     <span className="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300">
@@ -170,7 +176,7 @@ const PublishedApps = () => {
                 </div>
               </div>
 
-              {/* Description */}
+              {/* Description with Smooth Reveal */}
               <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                 Take full control of your finances with a sleek, privacy-first
                 expense tracker and budget planner. Designed to track income and
@@ -182,12 +188,13 @@ const PublishedApps = () => {
               {/* Key Features Grid */}
               <div className="grid sm:grid-cols-2 gap-3.5 pt-2">
                 {features.map((feat, idx) => (
-                  <div
+                  <motion.div
                     key={idx}
-                    className="p-3.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 hover:border-gray-300 dark:hover:border-white/10 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    className="p-3.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 hover:border-emerald-500/30 transition-all shadow-sm"
                   >
                     <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="p-1.5 rounded-lg bg-gray-200/50 dark:bg-white/10">
+                      <div className="p-1.5 rounded-lg bg-gray-200/50 dark:bg-white/10 shadow-sm">
                         {feat.icon}
                       </div>
                       <h4 className="font-semibold text-sm text-gray-900 dark:text-white">
@@ -197,7 +204,7 @@ const PublishedApps = () => {
                     <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal pl-8">
                       {feat.desc}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -223,15 +230,15 @@ const PublishedApps = () => {
                 ))}
               </div>
 
-              {/* Download on Google Play Call To Action */}
+              {/* Prominent Google Play Button */}
               <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <motion.a
                   href={PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="group relative inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-black hover:bg-gray-900 text-white rounded-xl border border-white/20 shadow-xl transition-all duration-300"
+                  className="group relative inline-flex items-center justify-center gap-3 px-6 py-3.5 bg-black hover:bg-neutral-900 text-white rounded-xl border border-white/20 shadow-2xl shadow-emerald-500/20 transition-all duration-300"
                   aria-label="Download MoneyFlow on Google Play"
                 >
                   <FaGooglePlay className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
@@ -248,40 +255,56 @@ const PublishedApps = () => {
 
                 <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 px-2">
                   <FaShieldAlt className="text-emerald-500 w-4 h-4 shrink-0" />
-                  <span>Verified Play Store Application • Direct Official Listing</span>
+                  <span>Verified Google Play Listing • Open in App on Android</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Interactive App Screenshots Mockup (5 cols) */}
+            {/* Right Column: Floating 3D Mobile Device Mockup (5 cols) */}
             <div className="lg:col-span-5 flex flex-col items-center">
-              {/* Phone Frame Mockup */}
-              <div className="relative w-full max-w-[280px] sm:max-w-[310px]">
-                {/* Outer Glow */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-teal-500/10 to-red-500/20 rounded-[44px] blur-xl" />
+              <TiltCard
+                maxTilt={14}
+                scale={1.03}
+                perspective={1200}
+                className="relative w-full max-w-[280px] sm:max-w-[310px] cursor-pointer"
+              >
+                {/* 3D Ambient Depth Aura */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/25 via-teal-500/15 to-red-500/25 rounded-[48px] blur-2xl pointer-events-none" />
 
-                {/* Device Container */}
-                <div className="relative rounded-[40px] border-[6px] border-gray-800 dark:border-neutral-700 bg-neutral-900 shadow-2xl overflow-hidden aspect-[9/18.5]">
+                {/* Floating 3D Tag (Above Device) */}
+                <div
+                  style={{ transform: "translateZ(40px)" }}
+                  className="absolute -top-4 -right-2 px-3 py-1.5 rounded-full bg-black/90 backdrop-blur-md border border-white/20 text-[11px] font-semibold text-white shadow-xl flex items-center gap-1.5 z-30"
+                >
+                  <HiSparkles className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Play Store App</span>
+                </div>
+
+                {/* Device Chassis with 3D Depth */}
+                <div
+                  style={{ transform: "translateZ(25px)" }}
+                  className="relative rounded-[40px] border-[6px] border-neutral-800 dark:border-neutral-700 bg-neutral-950 shadow-2xl overflow-hidden aspect-[9/18.5]"
+                >
                   {/* Phone Notch/Camera */}
                   <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-20 flex items-center justify-center">
                     <div className="w-2.5 h-2.5 bg-neutral-800 rounded-full" />
                   </div>
 
-                  {/* Active Screenshot Display */}
+                  {/* Active Screenshot Display with 3D Perspective */}
                   <div
-                    className="relative w-full h-full cursor-pointer overflow-hidden bg-black"
+                    className="relative w-full h-full overflow-hidden bg-black"
                     onClick={() => setModalImage(screenshots[activeScreenshot].src)}
-                    title="Click to view full screenshot"
+                    title="Click to view full screenshot in lightbox"
                   >
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={activeScreenshot}
                         src={screenshots[activeScreenshot].src}
                         alt={`MoneyFlow screenshot - ${screenshots[activeScreenshot].label}`}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.05 }}
+                        transition={{ duration: 0.35 }}
                         className="w-full h-full object-cover"
                       />
                     </AnimatePresence>
@@ -304,7 +327,7 @@ const PublishedApps = () => {
                       e.stopPropagation();
                       prevScreenshot();
                     }}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white z-10 transition-colors backdrop-blur-sm"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white z-20 transition-colors backdrop-blur-sm"
                     aria-label="Previous screenshot"
                   >
                     <HiChevronLeft className="w-5 h-5" />
@@ -314,13 +337,13 @@ const PublishedApps = () => {
                       e.stopPropagation();
                       nextScreenshot();
                     }}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white z-10 transition-colors backdrop-blur-sm"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white z-20 transition-colors backdrop-blur-sm"
                     aria-label="Next screenshot"
                   >
                     <HiChevronRight className="w-5 h-5" />
                   </button>
                 </div>
-              </div>
+              </TiltCard>
 
               {/* Thumbnail Selector Dots / Previews */}
               <div className="flex gap-2.5 mt-5 justify-center">
@@ -330,7 +353,7 @@ const PublishedApps = () => {
                     onClick={() => setActiveScreenshot(idx)}
                     className={`relative rounded-lg overflow-hidden border-2 transition-all duration-200 ${
                       activeScreenshot === idx
-                        ? "border-emerald-500 scale-105 shadow-md shadow-emerald-500/20"
+                        ? "border-emerald-500 scale-105 shadow-lg shadow-emerald-500/25"
                         : "border-gray-300 dark:border-white/10 opacity-60 hover:opacity-100"
                     }`}
                     aria-label={`View screenshot ${idx + 1}`}
@@ -345,7 +368,7 @@ const PublishedApps = () => {
               </div>
             </div>
           </div>
-        </div>
+        </TiltCard>
       </motion.div>
 
       {/* Lightbox Modal for Full Screenshot */}
@@ -356,12 +379,12 @@ const PublishedApps = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setModalImage(null)}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
           >
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-sm sm:max-w-md max-h-[90vh] bg-neutral-900 rounded-3xl overflow-hidden border border-white/20 shadow-2xl"
             >
@@ -386,4 +409,3 @@ const PublishedApps = () => {
 };
 
 export default PublishedApps;
-
